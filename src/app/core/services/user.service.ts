@@ -33,7 +33,7 @@ export class UserService {
 		? JSON.parse(localStorage.getItem('waw_user') as string)
 		: this.new();
 
-	roles = ['admin'];
+	roles = ['admin', 'agent', 'owner'];
 
 	role(role: string): boolean {
 		return !!this.user.is[role];

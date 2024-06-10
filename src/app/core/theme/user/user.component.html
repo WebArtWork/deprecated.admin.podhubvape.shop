@@ -56,6 +56,7 @@
 					/>
 					<div class="name">{{us.user.name || "Profile"}}</div>
 				</a>
+				<hr />
 				<a
 					[routerLinkActiveOptions]="{ exact: true }"
 					routerLinkActive="_activeLink"
@@ -89,6 +90,118 @@
 					<span class="material-icons">translate</span>
 					<span translate>Theme.Translates</span>
 				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/admin/themes"
+					class="nav__burger-link"
+					*ngIf="us.role('admin')"
+					(click)="show = false"
+				>
+					<span class="material-icons">palette</span>
+					<span translate>Theme.Themes</span>
+				</a>
+				<hr *ngIf="us.role('admin')" />
+
+				<ng-container *ngFor="let role of ['agent', 'owner']">
+					<a
+						[routerLinkActiveOptions]="{ exact: true }"
+						routerLinkActive="_activeLink"
+						routerLink="/{{role}}/stores"
+						*ngIf="us.role(role)"
+						class="nav__burger-link"
+						(click)="show = false"
+					>
+						<span class="material-icons">storefront</span>
+						<span translate>Theme.Stores</span>
+					</a>
+
+					<a
+						[routerLinkActiveOptions]="{ exact: true }"
+						routerLinkActive="_activeLink"
+						routerLink="/{{role}}/tags"
+						class="nav__burger-link"
+						*ngIf="us.role(role)"
+						(click)="show = false"
+					>
+						<span class="material-icons">bookmark</span>
+						<span translate>Theme.Tags</span>
+					</a>
+
+					<a
+						[routerLinkActiveOptions]="{ exact: true }"
+						routerLinkActive="_activeLink"
+						routerLink="/{{role}}/products"
+						*ngIf="us.role(role)"
+						class="nav__burger-link"
+						(click)="show = false"
+					>
+						<span class="material-icons">construction</span>
+						<span translate>Theme.Products</span>
+					</a>
+
+					<a
+						[routerLinkActiveOptions]="{ exact: true }"
+						routerLinkActive="_activeLink"
+						routerLink="/{{role}}/articles"
+						*ngIf="us.role(role)"
+						(click)="show = false"
+						class="nav__burger-link"
+					>
+						<span class="material-icons">feed</span>
+						<span translate>Theme.Articles</span>
+					</a>
+
+					<a
+						[routerLinkActiveOptions]="{ exact: true }"
+						routerLinkActive="_activeLink"
+						routerLink="/{{role}}/contents"
+						*ngIf="us.role(role)"
+						(click)="show = false"
+						class="nav__burger-link"
+					>
+						<span class="material-icons">library_books</span>
+						<span translate>Theme.Contents</span>
+					</a>
+
+					<a
+						[routerLinkActiveOptions]="{ exact: true }"
+						routerLinkActive="_activeLink"
+						routerLink="/{{role}}/clients"
+						*ngIf="us.role(role)"
+						(click)="show = false"
+						class="nav__burger-link"
+					>
+						<span class="material-icons">people</span>
+						<span translate>Theme.Clients</span>
+					</a>
+
+					<a
+						[routerLinkActiveOptions]="{ exact: true }"
+						routerLinkActive="_activeLink"
+						routerLink="/{{role}}/orders"
+						*ngIf="us.role(role)"
+						(click)="show = false"
+						class="nav__burger-link"
+					>
+						<span class="material-icons">receipt</span>
+						<span translate>Theme.Orders</span>
+					</a>
+
+					<a
+						[routerLinkActiveOptions]="{ exact: true }"
+						routerLinkActive="_activeLink"
+						routerLink="/{{role}}/discounts"
+						*ngIf="us.role(role)"
+						(click)="show = false"
+						class="nav__burger-link"
+					>
+						<span class="material-icons">local_offer</span>
+						<span translate>Theme.Discounts</span>
+					</a>
+
+					<hr *ngIf="us.role(role)" />
+				</ng-container>
 			</div>
 		</div>
 		<router-outlet></router-outlet>

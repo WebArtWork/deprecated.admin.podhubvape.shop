@@ -1,0 +1,13 @@
+<wtable
+	title="Features"
+	[columns]="columns"
+	[config]="config"
+	[rows]="rows"
+>
+	<ng-template cell="inPlan" let-element>
+		<winput (wChange)="element.inPlan[plan] = $event; update(element)" [value]="element.inPlan[plan]" type="checkbox"></winput>
+	</ng-template>
+	<ng-template cell="inDone" let-element>
+		<winput (wChange)="element.inDone[plan] = $event; update(element)" [value]="element.inDone[plan]" type="checkbox"></winput>
+	</ng-template>
+</wtable>

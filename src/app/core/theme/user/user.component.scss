@@ -25,26 +25,13 @@
 
 		@media screen and (max-width: 991px) {
 			padding: 20px;
-		  }
-
-		// .fade {
-		// 	display: none;
-		// 	position: fixed;
-		// 	width: 100%;
-		// 	height: 100%;
-		// 	z-index: 9;
-		// 	background: rgba(0, 0, 0, 0.3);
-		// 	@media screen and (max-width: 991px) {
-		// 		display: block;
-		// 	}
-		// }
+		}
 	}
 }
 
 .showTable {
 	padding: 20px !important;
 }
-
 
 /*  NAV STYLE  */
 .nav {
@@ -160,7 +147,9 @@
 			background: $c-white;
 		}
 		@media screen and (max-width: 767px) {
-			.nav__toggle-line, .nav__toggle-line:before, .nav__toggle-line:after{
+			.nav__toggle-line,
+			.nav__toggle-line:before,
+			.nav__toggle-line:after {
 				background: #fff;
 			}
 			&-line:before {
@@ -176,7 +165,7 @@
 		}
 		&._active &-line {
 			background: $c-white;
-			
+
 			&:before,
 			&:after {
 				top: 0;
@@ -187,7 +176,7 @@
 			}
 			&:after {
 				transform: unset;
-				top:7px
+				top: 7px;
 			}
 			@media screen and (max-width: 767px) {
 				background: transparent;
@@ -258,7 +247,6 @@
 			@include flexBox(flex, column, center, center, null);
 			color: var(--c-text-primary);
 			padding: 5px;
-			border-bottom: 1px solid var(--c-border);
 			margin-bottom: 10px;
 			.name {
 				word-break: break-word;
@@ -281,6 +269,10 @@
 			top: 0;
 		}
 	}
+}
+
+hr {
+	margin: 5px 0;
 }
 
 .theme-switch {
