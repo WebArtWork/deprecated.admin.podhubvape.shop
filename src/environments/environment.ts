@@ -5,8 +5,7 @@ import { environment as environmentProd } from './environment.prod';
 
 export const environment = {
 	...environmentProd,
-	production: false,
-	url: 'http://localhost:8080'
+	production: false
 };
 
 /*
