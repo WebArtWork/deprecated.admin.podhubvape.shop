@@ -18,6 +18,7 @@
     "@angular/platform-browser-dynamic": "^18.0.4",
     "@angular/router": "^18.0.4",
     "@types/node": "^20.1.5",
+    "ng-qrcode": "^18.0.0",
     "ngx-image-cropper": "^7.1.1",
     "rxjs": "~7.5.0",
     "socket.io-client": "^4.5.1",

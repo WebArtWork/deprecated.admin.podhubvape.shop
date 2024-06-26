@@ -1,0 +1,32 @@
+<h1>Change domain: {{store.domain || ''}}</h1>
+
+<div *ngIf="config.ip">
+	<h3>Set domain settings</h3>
+	<table>
+		<thead>
+			<td>Type</td>
+			<td>Host</td>
+			<td>Value</td>
+		</thead>
+		<tr>
+			<td>A Record</td>
+			<td>*</td>
+			<td>{{config.ip}}</td>
+		</tr>
+		<tr>
+			<td>A Record</td>
+			<td>&#64;</td>
+			<td>{{config.ip}}</td>
+		</tr>
+	</table>
+</div>
+
+<p>You can fill your own domain or write subdomain to our domain without any dots</p>
+
+<winput
+	label="Custom domain"
+	placeholder="fill your domain"
+	(wChange)="domain = $event"
+></winput>
+
+<wbutton [disabled]="!domain" (wClick)="update()">Update</wbutton>

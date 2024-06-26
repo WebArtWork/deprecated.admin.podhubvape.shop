@@ -17,6 +17,100 @@ import { AdminsGuard } from './core/guards/admins.guard';
 import { AlertModule } from './modules/alert/alert.module';
 import { ModalModule } from './modules/modal/modal.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { OwnersGuard } from './core/guards/owners.guard';
+import { AgentsGuard } from './core/guards/agents.guard';
+
+const ownerPages = [
+	{
+		path: 'stores',
+		canActivate: [MetaGuard],
+		data: {
+			meta: {
+				title: 'Stores'
+			}
+		},
+		loadChildren: () => import('./modules/store/pages/stores/stores.module').then(m => m.StoresModule)
+	},
+	{
+		path: 'tags',
+		canActivate: [MetaGuard],
+		data: {
+			meta: {
+				title: 'Tags'
+			}
+		},
+		loadChildren: () => import('./modules/tag/pages/tags/tags.module').then(m => m.TagsModule)
+	},
+	{
+		path: 'products',
+		canActivate: [MetaGuard],
+		data: {
+			meta: {
+				title: 'Admin Products'
+			}
+		},
+		loadChildren: () => import('./modules/product/pages/products/products.module').then(m => m.ProductsModule)
+	},
+	{
+		path: 'articles',
+		canActivate: [MetaGuard],
+		data: {
+			meta: {
+				title: 'Articles'
+			}
+		},
+		loadChildren: () =>
+			import('./modules/article/pages/articles/articles.module').then(
+				(m) => m.ArticlesModule
+			)
+	},
+	{
+		path: 'contents',
+		canActivate: [MetaGuard],
+		data: {
+			meta: {
+				title: 'Contents'
+			}
+		},
+		loadChildren: () =>
+			import('./modules/content/pages/contents/contents.module').then(
+				(m) => m.ContentsModule
+			)
+	},
+	{
+		path: 'clients',
+		canActivate: [MetaGuard],
+		data: {
+			meta: {
+				title: 'Clients'
+			}
+		},
+		loadChildren: () => import('./modules/user/pages/clients/clients.module').then(m => m.ClientsModule)
+	},
+	{
+		path: 'orders',
+		canActivate: [MetaGuard],
+		data: {
+			meta: {
+				title: 'Orders'
+			}
+		},
+		loadChildren: () =>
+			import('./modules/order/pages/orders/orders.module').then(
+				(m) => m.OrdersModule
+			)
+	},
+	{
+		path: 'discounts',
+		canActivate: [MetaGuard],
+		data: {
+			meta: {
+				title: 'Discounts'
+			}
+		},
+		loadChildren: () => import('./modules/discount/pages/discounts/discounts.module').then(m => m.DiscountsModule)
+	}
+];
 
 const routes: Routes = [
 	{
@@ -114,6 +208,24 @@ const routes: Routes = [
 		]
 	},
 	{
+		path: 'owner',
+		canActivate: [OwnersGuard],
+		component: UserComponent,
+		children: [
+			/* owner */
+			...ownerPages
+		]
+	},
+	{
+		path: 'agent',
+		canActivate: [AgentsGuard],
+		component: UserComponent,
+		children: [
+			/* owner */
+			...ownerPages
+		]
+	},
+	{
 		path: '**',
 		redirectTo: 'profile',
 		pathMatch: 'full'
@@ -158,6 +270,8 @@ const routes: Routes = [
 		AuthenticatedGuard,
 		GuestGuard,
 		AdminsGuard,
+		OwnersGuard,
+		AgentsGuard,
 		{
 			provide: LocationStrategy,
 			useClass: HashLocationStrategy

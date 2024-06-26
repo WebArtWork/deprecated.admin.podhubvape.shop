@@ -5,8 +5,11 @@ import { environment as environmentProd } from './environment.prod';
 
 export const environment = {
 	...environmentProd,
-	production: false
+	production: false,
+	url: ''
 };
+
+console.log(environment);
 
 /*
  * For easier debugging in development mode, you can import the following file
