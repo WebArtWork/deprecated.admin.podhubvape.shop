@@ -4,12 +4,12 @@ import { MongoService, AlertService } from 'wacom';
 export interface Product {
 	_id?: string;
 	name: string;
-	price: number;
 	tag: string;
 	tags: string[];
 	description: string;
 	isTemplate: boolean;
 	template: string;
+	price: number;
 }
 
 @Injectable({

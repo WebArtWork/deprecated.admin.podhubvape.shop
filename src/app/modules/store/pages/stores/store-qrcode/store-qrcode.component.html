@@ -1,12 +1,12 @@
 <!-- centerImageSrc="undefined" -->
 <qr-code
-	[ngStyle]="{border: '1px solid black'}"
+	class="cutCanvas"
+	style="border: 1px solid black"
 	[value]="'https://' + store.domain"
+	size="1024"
+	darkColor="#000"
+	lightColor="#fff"
 	errorCorrectionLevel="M"
 	centerImageSize="200"
-	class="cutCanvas"
-	lightColor="#fff"
-	darkColor="#000"
 	[margin]="4"
-	size="1024"
 ></qr-code>

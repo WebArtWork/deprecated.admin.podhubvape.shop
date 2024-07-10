@@ -22,8 +22,8 @@ export interface Word {
 	providedIn: 'root'
 })
 export class TranslateService {
-	readonly appId = (environment as unknown as { appId: string }).appId;
 	readonly allLanguages = languages;
+	readonly appId = (environment as unknown as { appId: string }).appId;
 
 	constructor(
 		private store: StoreService,
