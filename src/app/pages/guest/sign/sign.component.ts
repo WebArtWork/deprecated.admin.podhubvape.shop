@@ -108,6 +108,7 @@ export class SignComponent {
 	) {}
 
 	submit(form: Form): void {
+		console.log(form);
 		if (!this.form.components[2].hidden && form.code) {
 			this.save();
 		} else if (!form.email) {
