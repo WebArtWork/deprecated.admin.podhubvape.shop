@@ -375,6 +375,7 @@ export class FormService {
 		callback = (created: FormInterface) => {},
 		text = 'form has been created.'
 	) {
+		form.appId = this.appId;
 		if (form._id) {
 			this.save(form);
 		} else {
