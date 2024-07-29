@@ -96,9 +96,7 @@ export class FormComponent implements AfterViewInit {
 	}
 
 	onSubmit(): void {
-		console.log('onSubmit');
 		this._core.afterWhile(this, () => {
-		console.log('onSubmit 2');
 			this.wSubmit.emit(this._values());
 		});
 	}

@@ -1,6 +1,6 @@
-import { NgModule, Renderer2 } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WacomModule } from 'wacom';
 import { ButtonModule } from 'src/app/modules/button/button.module';
 import { InputModule } from 'src/app/modules/input/input.module';
@@ -24,6 +24,7 @@ import { SelectModule } from '../modules/select/select.module';
 		SelectModule,
 		CommonModule,
 		FormsModule,
+		ReactiveFormsModule,
 		WacomModule,
 		ButtonModule,
 		InputModule,
@@ -34,7 +35,7 @@ import { SelectModule } from '../modules/select/select.module';
 		TableModule,
 		IconsModule
 	],
-	imports: [CommonModule, FormsModule, WacomModule, FormcomponentsModule],
+	imports: [CommonModule, FormsModule, ReactiveFormsModule, WacomModule, FormcomponentsModule],
 	providers: []
 })
 export class CoreModule {}

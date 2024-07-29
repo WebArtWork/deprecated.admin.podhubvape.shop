@@ -1,6 +1,6 @@
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Renderer2 } from '@angular/core';
+import { NgModule } from '@angular/core';
 // Core
 import { GuestComponent } from './core/theme/guest/guest.component';
 import { UserComponent } from './core/theme/user/user.component';
@@ -29,7 +29,10 @@ const ownerPages = [
 				title: 'Stores'
 			}
 		},
-		loadChildren: () => import('./modules/store/pages/stores/stores.module').then(m => m.StoresModule)
+		loadChildren: () =>
+			import('./modules/store/pages/stores/stores.module').then(
+				(m) => m.StoresModule
+			)
 	},
 	{
 		path: 'tags',
@@ -39,7 +42,10 @@ const ownerPages = [
 				title: 'Tags'
 			}
 		},
-		loadChildren: () => import('./modules/tag/pages/tags/tags.module').then(m => m.TagsModule)
+		loadChildren: () =>
+			import('./modules/tag/pages/tags/tags.module').then(
+				(m) => m.TagsModule
+			)
 	},
 	{
 		path: 'products',
@@ -49,7 +55,10 @@ const ownerPages = [
 				title: 'Admin Products'
 			}
 		},
-		loadChildren: () => import('./modules/product/pages/products/products.module').then(m => m.ProductsModule)
+		loadChildren: () =>
+			import('./modules/product/pages/products/products.module').then(
+				(m) => m.ProductsModule
+			)
 	},
 	{
 		path: 'articles',
@@ -85,7 +94,10 @@ const ownerPages = [
 				title: 'Clients'
 			}
 		},
-		loadChildren: () => import('./modules/user/pages/clients/clients.module').then(m => m.ClientsModule)
+		loadChildren: () =>
+			import('./modules/user/pages/clients/clients.module').then(
+				(m) => m.ClientsModule
+			)
 	},
 	{
 		path: 'orders',
@@ -108,7 +120,10 @@ const ownerPages = [
 				title: 'Discounts'
 			}
 		},
-		loadChildren: () => import('./modules/discount/pages/discounts/discounts.module').then(m => m.DiscountsModule)
+		loadChildren: () =>
+			import('./modules/discount/pages/discounts/discounts.module').then(
+				(m) => m.DiscountsModule
+			)
 	}
 ];
 

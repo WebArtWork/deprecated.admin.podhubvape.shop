@@ -11,6 +11,7 @@ import { FormInterface } from './interfaces/form.interface';
 import { ModalFormComponent } from './modals/modal-form/modal-form.component';
 import { TranslateService } from '../translate/translate.service';
 import { ModalUniqueComponent } from './modals/modal-unique/modal-unique.component';
+import { environment } from 'src/environments/environment';
 import { Modal } from '../modal/modal.interface';
 
 export interface FormModalButton {
@@ -23,6 +24,7 @@ export interface FormModalButton {
 	providedIn: 'root'
 })
 export class FormService {
+	readonly appId = (environment as unknown as { appId: string }).appId;
 	constructor(
 		private _translate: TranslateService,
 		private _modal: ModalService,
@@ -31,7 +33,9 @@ export class FormService {
 		private _alert: AlertService,
 		private _core: CoreService
 	) {
-		this.customForms = _mongo.get('form', {}, (arr: any, obj: any) => {
+		this.customForms = _mongo.get('form', {
+			param: '?appId=' + this.appId
+		}, (arr: any, obj: any) => {
 			this._forms = obj;
 
 			for (const form of this.customForms) {
