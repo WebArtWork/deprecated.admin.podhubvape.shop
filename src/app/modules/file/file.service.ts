@@ -10,25 +10,31 @@ export class FileService {
 	constructor(private _file: WacomFileService) {
 		this._file.add({
 			id: 'formPhoto',
-			accept: 'image/*',
-			resize: 1920,
-			cb: (file: string | File) => {
-				if (typeof file === 'string' && typeof this.setFile === 'function') {
-					this.setFile(file);
-				}
-			}
+			// accept: 'image/*',
+			resize: 1920
+			// cb: (file: string | File, f: File): void => {
+			// 	if (
+			// 		typeof file === 'string' &&
+			// 		typeof this.setFile === 'function'
+			// 	) {
+			// 		this.setFile(file);
+			// 	}
+			// }
 		});
 
 		this._file.add({
 			id: 'formPhotos',
-			accept: 'image/*',
+			// accept: 'image/*',
 			multiple: true,
-			resize: 1920,
-			cb: (file: string | File) => {
-				if (typeof file === 'string' && typeof this.setFile === 'function') {
-					this.setFile(file);
-				}
-			}
+			resize: 1920
+			// cb: (file: string | File, f: File): void => {
+			// 	if (
+			// 		typeof file === 'string' &&
+			// 		typeof this.setFile === 'function'
+			// 	) {
+			// 		this.setFile(file);
+			// 	}
+			// }
 		});
 	}
 }

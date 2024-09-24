@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CoreService, MongoService, StoreService } from 'wacom';
+import { MongoService, StoreService } from 'wacom';
 import {
 	FormComponentInterface,
 	TemplateComponentInterface,
@@ -11,8 +11,8 @@ import { FormInterface } from './interfaces/form.interface';
 import { ModalFormComponent } from './modals/modal-form/modal-form.component';
 import { TranslateService } from '../translate/translate.service';
 import { ModalUniqueComponent } from './modals/modal-unique/modal-unique.component';
-import { environment } from 'src/environments/environment';
 import { Modal } from '../modal/modal.interface';
+import { environment } from 'src/environments/environment';
 
 export interface FormModalButton {
 	click: (submition: unknown, close: () => void) => void;
@@ -30,8 +30,7 @@ export class FormService {
 		private _modal: ModalService,
 		private _mongo: MongoService,
 		private _store: StoreService,
-		private _alert: AlertService,
-		private _core: CoreService
+		private _alert: AlertService
 	) {
 		this.customForms = _mongo.get('form', {
 			param: '?appId=' + this.appId
@@ -214,9 +213,7 @@ export class FormService {
 						},
 						{
 							name: 'Label',
-							value: this._core.capitalizeFirstLetter(
-								key.split('.')[0]
-							)
+							value: key.split('.')[0].capitalize()
 						}
 					]
 				};
@@ -375,10 +372,10 @@ export class FormService {
 		callback = (created: FormInterface) => {},
 		text = 'form has been created.'
 	) {
-		form.appId = this.appId;
 		if (form._id) {
 			this.save(form);
 		} else {
+			form.appId = this.appId;
 			this._mongo.create('form', form, (created: FormInterface) => {
 				callback(created);
 
