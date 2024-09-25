@@ -98,8 +98,9 @@ export class SignComponent {
 	});
 
 	user = {
-		email: 'ceo@webart.work',
-		password: 'asdasdasdasd'
+		email:
+			window.location.hostname === 'localhost' ? 'ceo@webart.work' : '',
+		password: window.location.hostname === 'localhost' ? 'asdasdasdasd' : ''
 	};
 
 	constructor(
