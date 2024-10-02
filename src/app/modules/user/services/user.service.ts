@@ -61,6 +61,7 @@ export class UserService extends CrudService<User> {
 		this.core = _core;
 		if (this.http.header('token')) {
 			this.fetch({}, { name: 'me' }).subscribe(this.setUser.bind(this));
+
 			this.load();
 		}
 
@@ -101,18 +102,22 @@ export class UserService extends CrudService<User> {
 
 	updateMe(): void {
 		this.setUser(this.user);
+
 		this.update(this.user);
 	}
 
 	updateMeAfterWhile(): void {
 		this.setUser(this.user);
+
 		this.updateAfterWhile(this.user);
 	}
 
 	private _changingPassword = false;
 	changePassword(oldPass: string, newPass: string): void {
 		if (this._changingPassword) return;
+
 		this._changingPassword = true;
+
 		this.http.post(
 			'/api/user/changePassword',
 			{
@@ -121,6 +126,7 @@ export class UserService extends CrudService<User> {
 			},
 			(resp: boolean) => {
 				this._changingPassword = false;
+
 				if (resp) {
 					this.alert.info({
 						text: 'Successfully changed password'

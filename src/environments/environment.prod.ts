@@ -1,4 +1,6 @@
 export const environment = {
+	url: 'https://webart.work',
+	production: true,
 	appId: 'vibes',
 	roles: [
 		'vibes-owner',
@@ -28,8 +30,6 @@ export const environment = {
 		'vibes-sales':
 			'Can access retail prices, trade operations, stock in the store, cash register, and manual discounts (three types of discounts3% cumulative, 5% military, 10% corporate up to 1000 UAH).'
 	},
-	url: 'https://webart.work',
-	production: true,
 	languages: [
 		{
 			code: 'en',
