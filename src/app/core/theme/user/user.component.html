@@ -105,6 +105,18 @@
 					<a
 						[routerLinkActiveOptions]="{ exact: true }"
 						routerLinkActive="_activeLink"
+						routerLink="/{{role}}/warehouses"
+						*ngIf="us.role(role)"
+						class="nav__burger-link"
+						(click)="hideSidebar()"
+					>
+						<span class="material-icons">business</span>
+						<span translate>Theme.Warehouses</span>
+					</a>
+
+					<a
+						[routerLinkActiveOptions]="{ exact: true }"
+						routerLinkActive="_activeLink"
 						routerLink="/{{role}}/tags"
 						class="nav__burger-link"
 						*ngIf="us.role(role)"

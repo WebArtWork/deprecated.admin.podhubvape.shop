@@ -35,6 +35,19 @@ const ownerPages = [
 			)
 	},
 	{
+		path: 'warehouses',
+		canActivate: [MetaGuard],
+		data: {
+			meta: {
+				title: 'Warehouses'
+			}
+		},
+		loadChildren: () =>
+			import(
+				'./modules/warehouse/pages/warehouses/warehouses.module'
+			).then((m) => m.WarehousesModule)
+	},
+	{
 		path: 'tags',
 		canActivate: [MetaGuard],
 		data: {
@@ -265,8 +278,8 @@ const routes: Routes = [
 			meta: {
 				useTitleSuffix: true,
 				defaults: {
-					title: 'Web Art Work',
-					titleSuffix: ' | Web Art Work',
+					title: 'Pod Hub Vape Shop',
+					titleSuffix: ' | Pod Hub Vape Shop',
 					'og:image': 'https://webart.work/api/user/cdn/waw-logo.png'
 				}
 			},
