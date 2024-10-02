@@ -41,5 +41,10 @@ export const environment = {
 			origin: 'українська',
 			code: 'uk'
 		}
-	]
+	],
+	language: {
+		name: 'Ukrainian',
+		origin: 'українська',
+		code: 'uk'
+	}
 };

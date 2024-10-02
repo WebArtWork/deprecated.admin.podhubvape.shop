@@ -7,18 +7,17 @@ import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 
 @Component({
-	selector: 'app-users',
-	templateUrl: './users.component.html',
-	styleUrls: ['./users.component.scss']
+	templateUrl: './employees.component.html',
+	styleUrls: ['./employees.component.scss']
 })
-export class UsersComponent {
+export class EmployeesComponent {
 	readonly roles = this._us.roles;
 
 	readonly roleName = this._us.roleName;
 
 	readonly roleDescription = this._us.roleDescription;
 
-	columns = ['name', 'email', 'admin'];
+	columns = ['name', 'email'];
 
 	get users(): User[] {
 		return this._us.users;
@@ -73,10 +72,10 @@ export class UsersComponent {
 
 	constructor(
 		private _translate: TranslateService,
-		private _us: UserService,
-		private _form: FormService,
 		private _alert: AlertService,
-		private _core: CoreService
+		private _form: FormService,
+		private _core: CoreService,
+		private _us: UserService
 	) {
 		for (const role of this._us.roles) {
 			this.columns.push(this._us.roleName[role] || role);

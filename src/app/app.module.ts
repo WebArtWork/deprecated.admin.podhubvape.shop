@@ -22,6 +22,19 @@ import { AgentsGuard } from './core/guards/agents.guard';
 
 const ownerPages = [
 	{
+		path: 'employees',
+		canActivate: [MetaGuard],
+		data: {
+			meta: {
+				title: 'Employees'
+			}
+		},
+		loadChildren: () =>
+			import('./modules/user/pages/employees/employees.module').then(
+				(m) => m.EmployeesModule
+			)
+	},
+	{
 		path: 'stores',
 		canActivate: [MetaGuard],
 		data: {

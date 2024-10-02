@@ -1,14 +1,5 @@
 <!--==== Table Module ====-->
 <wtable [columns]="columns" [config]="config" [rows]="users">
-	<ng-template cell="admin" let-element>
-		<winput
-			(wChange)="element.is.admin = $event; update(element)"
-			[value]="element.is.admin"
-			title="Administrator"
-			type="checkbox"
-		></winput>
-	</ng-template>
-
 	<ng-template
 		[cell]="roleName[role] || role"
 		*ngFor="let role of roles"

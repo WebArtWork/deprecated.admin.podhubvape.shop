@@ -93,6 +93,18 @@
 					<a
 						[routerLinkActiveOptions]="{ exact: true }"
 						routerLinkActive="_activeLink"
+						routerLink="/{{role}}/employees"
+						*ngIf="us.role(role)"
+						class="nav__burger-link"
+						(click)="hideSidebar()"
+					>
+						<span class="material-icons">group</span>
+						<span translate>Theme.Employees</span>
+					</a>
+
+					<a
+						[routerLinkActiveOptions]="{ exact: true }"
+						routerLinkActive="_activeLink"
 						routerLink="/{{role}}/stores"
 						*ngIf="us.role(role)"
 						class="nav__burger-link"

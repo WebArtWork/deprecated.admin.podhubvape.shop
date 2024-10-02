@@ -9,6 +9,7 @@ import {
 import { User } from '../interfaces/user.interface';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { TranslateService } from '../../translate/translate.service';
 
 @Injectable({
 	providedIn: 'root'
@@ -18,18 +19,31 @@ export class UserService extends CrudService<User> {
 	private store: StoreService;
 	private alert: AlertService;
 	private core: CoreService;
+
 	roles = (environment as unknown as { roles: string[] }).roles || ['admin'];
+	roleName = (environment as unknown as { roleName: Record<string, string> })
+		.roleName || {
+		admin: 'Admin'
+	};
+	roleDescription = (
+		environment as unknown as { roleDescription: Record<string, string> }
+	).roleDescription || {
+		admin: 'Administrator of the project'
+	};
+
 	mode = '';
 	users: User[] = [];
 	user: User = localStorage.getItem('waw_user')
 		? JSON.parse(localStorage.getItem('waw_user') as string)
 		: this.new();
+
 	constructor(
 		_http: HttpService,
 		_store: StoreService,
 		_alert: AlertService,
 		_core: CoreService,
-		private _router: Router
+		private _router: Router,
+		private _translate: TranslateService
 	) {
 		super(
 			{
@@ -143,6 +157,26 @@ export class UserService extends CrudService<User> {
 	deleteAdmin(user: User): void {
 		this.delete(user, {
 			name: 'admin'
+		});
+	}
+
+	addRole(user: User, close = () => {}): void {
+		this.http.post('api/user/role', user).subscribe((resp) => {
+			close();
+
+			if (resp.created) {
+				this.alert.show({
+					text: this._translate.translate(
+						'User.User has been created and assigned'
+					)
+				});
+			} else if (resp.assigned) {
+				this.alert.show({
+					text: this._translate.translate(
+						'User.User has been assigned'
+					)
+				});
+			}
 		});
 	}
 }
