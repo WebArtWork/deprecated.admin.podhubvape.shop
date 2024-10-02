@@ -1,4 +1,5 @@
 export const environment = {
+	appId: 'vibes',
 	roles: [
 		'vibes-owner',
 		'vibes-partner',
@@ -29,7 +30,6 @@ export const environment = {
 	},
 	url: 'https://webart.work',
 	production: true,
-	appId: 'vibescrm',
 	languages: [
 		{
 			code: 'en',
